@@ -61,14 +61,7 @@ q3=0;
 y = GMHD_getJoystickZ(controller_id)/2 + obj_hydrabase.y;
 z = GMHD_getJoystickY(controller_id)/2;
 
-//yaw = radtodeg(GMHD_getJoystickYaw(controller_id));
-//pitch = radtodeg(GMHD_getJoystickPitch(controller_id));
-//roll = radtodeg(GMHD_getJoystickRoll(controller_id));
-
 d3d_transform_set_identity();
-//d3d_transform_add_rotation_z(yaw);
-//d3d_transform_add_rotation_x(pitch);
-//d3d_transform_add_rotation_y(roll);
 
 q0 = GMHD_getJoystickQuaternion(controller_id,0); //p
 q1 = GMHD_getJoystickQuaternion(controller_id,1); //y
@@ -79,7 +72,6 @@ q0 = q0 + global._GMH_q0Offset[controller_id];
 q1 = q1 + global._GMH_q1Offset[controller_id];
 q2 = q2 + global._GMH_q2Offset[controller_id];
 q3 = q3 + global._GMH_q3Offset[controller_id];
-
 
 //d3d_add_rotation_quaternion(q0,q1,q2,q3);
 d3d_transform_add_rotation_x(q0*180);

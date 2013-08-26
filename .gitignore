@@ -1,2 +1,4 @@
 *.opensdf
 *.ipch
+GMHydraDll/ipch
+*.log

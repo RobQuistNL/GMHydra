@@ -80,7 +80,7 @@ GMEXPORT double GMH_updateStatus() {
 	return (double)1;
 }
 
-// Joystick functions
+// Joystick POSITION
 GMEXPORT double GMH_getJoystickX(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].pos[0];
 }
@@ -91,9 +91,7 @@ GMEXPORT double GMH_getJoystickZ(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].pos[2];
 }
 
-
-
-// Pitch roll and Yaw
+// Joystick ORIENTATION
 GMEXPORT double GMH_getJoystickRoll(double joyIndex) {
 	float3 returned = eulerAngles(joyIndex);
 	return (double) returned[2];
@@ -109,12 +107,31 @@ GMEXPORT double GMH_getJoystickYaw(double joyIndex) {
 	return (double) returned[0];
 }
 
+// Joystick RAW INPUT
 GMEXPORT double GMH_getJoystickMatrix(double joyIndex, double row, double col) {
 	return (double) acd.controllers[(int)joyIndex].rot_mat[(int)row][(int)col];
 }
 
 GMEXPORT double GMH_getJoystickQuaternion(double joyIndex, double index) {
 	return (double) acd.controllers[(int)joyIndex].rot_quat[(int)index];
+}
+
+// Joystick BUTTONS
+GMEXPORT double GMH_getJoystickTrigger(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].trigger;
+}
+
+GMEXPORT double GMH_getJoystickButtons(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].buttons;
+}
+
+// Joystick OTHERS
+GMEXPORT double GMH_getJoystickDocked(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].is_docked;
+}
+
+GMEXPORT double GMH_getJoystickHand(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].which_hand;
 }
 
 //General functions

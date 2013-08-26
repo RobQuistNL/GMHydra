@@ -3,11 +3,144 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="5" name="datafiles">
+    <datafile>
+      <name>sixense.dll</name>
+      <exists>-1</exists>
+      <size>622080</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename></filename>
+    </datafile>
+    <datafile>
+      <name>GMHydraDll.dll</name>
+      <exists>-1</exists>
+      <size>6656</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename></filename>
+    </datafile>
+    <datafile>
+      <name>sixense_utils.dll</name>
+      <exists>-1</exists>
+      <size>124416</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename></filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_hydra</sprite>
+    <sprite>sprites\spr_joystick</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\tex_floor</background>
+    <background>background\tex_test</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="GMHydra">
+      <scripts name="System">
+        <scripts name="DLL">
+          <script>scripts\GMH_initDll.gml</script>
+          <script>scripts\GMHD_init.gml</script>
+          <script>scripts\GMHD_destroy.gml</script>
+          <script>scripts\GMHD_getMaxBases.gml</script>
+          <script>scripts\GMHD_getHistorySize.gml</script>
+          <script>scripts\GMHD_getMaxControllers.gml</script>
+          <script>scripts\GMHD_getHighPriorityBindingEnabled.gml</script>
+          <script>scripts\GMHD_isBaseConnected.gml</script>
+          <script>scripts\GMHD_autoEnableHemisphereTracking.gml</script>
+          <script>scripts\GMHD_setHemisphereTrackingMode.gml</script>
+          <script>scripts\GMHD_getHemisphereTrackingMode.gml</script>
+          <script>scripts\GMHD_setHighPriorityBindingEnabled.gml</script>
+          <script>scripts\GMHD_triggerVibration.gml</script>
+          <script>scripts\GMHD_isControllerEnabled.gml</script>
+          <script>scripts\GMHD_setActiveBase.gml</script>
+          <script>scripts\GMHD_getNumActiveControllers.gml</script>
+          <script>scripts\GMHD_checkDllLoaded.gml</script>
+          <scripts name="Joysticks">
+            <script>scripts\GMHD_getJoystickY.gml</script>
+            <script>scripts\GMHD_getJoystickX.gml</script>
+            <script>scripts\GMHD_getJoystickZ.gml</script>
+            <script>scripts\GMHD_getJoystickRoll.gml</script>
+            <script>scripts\GMHD_getJoystickPitch.gml</script>
+            <script>scripts\GMHD_getJoystickYaw.gml</script>
+          </scripts>
+          <script>scripts\GMHD_updateStatus.gml</script>
+          <scripts name="Filters">
+            <script>scripts\GMHD_setFilterEnabled.gml</script>
+            <script>scripts\GMHD_setFilterParams.gml</script>
+            <script>scripts\GMHD_getFilterEnabled.gml</script>
+            <script>scripts\GMHD_getFilterNearRange.gml</script>
+            <script>scripts\GMHD_getFilterNearVal.gml</script>
+            <script>scripts\GMHD_getFilterFarRange.gml</script>
+            <script>scripts\GMHD_getFilterFarVal.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="Initialisation">
+          <script>scripts\GMH_initDefaults.gml</script>
+        </scripts>
+        <script>scripts\GMH_init.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\d3dproj.gml</script>
+    <script>scripts\joymodel.gml</script>
+  </scripts>
+  <objects name="objects">
+    <objects name="GMHydra">
+      <object>objects\obj_hydrabase</object>
+      <object>objects\obj_hydra_joystick</object>
+    </objects>
+    <objects name="Demo">
+      <object>objects\obj_3dcontroller</object>
+      <object>objects\obj_floor_ceiling</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+    <room>rooms\room1</room>
+  </rooms>
+  <constants number="9">
+    <constant name="GMH_SUCCESS">0</constant>
+    <constant name="GMH_BUTTON_BUMPER">0x01&lt;&lt;7</constant>
+    <constant name="GMH_FAILURE">-1</constant>
+    <constant name="GMH_BUTTON_JOYSTICK">0x01&lt;&lt;8</constant>
+    <constant name="GMH_BUTTON_1">0x01&lt;&lt;5</constant>
+    <constant name="GMH_BUTTON_2">0x01&lt;&lt;6</constant>
+    <constant name="GMH_BUTTON_3">0x01&lt;&lt;3</constant>
+    <constant name="GMH_BUTTON_4">0x01&lt;&lt;4</constant>
+    <constant name="GMH_BUTTON_START">0x01&lt;&lt;0</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

@@ -1,0 +1,17 @@
+﻿Build started 8/26/2013 1:11:37 PM.
+     1>Project "C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\GMHydraDll.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         GMHydraDll.vcxproj -> C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\Release\GMHydraDll.dll
+       FinalizeBuildStatus:
+         Deleting file "Release\GMHydraDll.unsuccessfulbuild".
+         Touching "Release\GMHydraDll.lastbuildstate".
+     1>Done Building Project "C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.16

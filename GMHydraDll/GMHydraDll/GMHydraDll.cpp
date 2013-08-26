@@ -135,11 +135,11 @@ GMEXPORT double GMH_getJoystickStickY(double joyIndex) {
 }
 
 // Joystick OTHERS
-GMEXPORT double GMH_getJoystickDocked(double joyIndex) {
+GMEXPORT double GMH_getJoystickIsDocked(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].is_docked;
 }
 
-GMEXPORT double GMH_getJoystickHand(double joyIndex) {
+GMEXPORT double GMH_getJoystickWhichHand(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].which_hand;
 }
 

@@ -1,17 +1,14 @@
-﻿Build started 8/26/2013 11:10:39 PM.
+﻿Build started 8/26/2013 11:25:30 PM.
      1>Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\GMHydraDll.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         All outputs are up-to-date.
-       Link:
-         All outputs are up-to-date.
-         GMHydraDll.vcxproj -> G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.dll
-       FinalizeBuildStatus:
-         Deleting file "Release\GMHydraDll.unsuccessfulbuild".
-         Touching "Release\GMHydraDll.lastbuildstate".
-     1>Done Building Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" (build target(s)).
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IG:\HYDRA\SixenseSDK_062612\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D GMHYDRADLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GMHydraDll.cpp
+         GMHydraDll.cpp
+     1>GMHydraDll.cpp(133): error C2084: function 'double GMH_getJoystickStickX(double)' already has a body
+                 GMHydraDll.cpp(129) : see previous definition of 'GMH_getJoystickStickX'
+     1>Done Building Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" (build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.08
+Time Elapsed 00:00:00.72

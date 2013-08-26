@@ -125,6 +125,15 @@ GMEXPORT double GMH_getJoystickButtons(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].buttons;
 }
 
+// Joystick STICK
+GMEXPORT double GMH_getJoystickStickX(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].joystick_x;
+}
+
+GMEXPORT double GMH_getJoystickStickX(double joyIndex) {
+	return (double) acd.controllers[(int)joyIndex].joystick_y;
+}
+
 // Joystick OTHERS
 GMEXPORT double GMH_getJoystickDocked(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].is_docked;

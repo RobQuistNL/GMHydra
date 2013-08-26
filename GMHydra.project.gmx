@@ -111,9 +111,9 @@
           <script>scripts\GMHD_calibrateRotation.gml</script>
         </scripts>
         <script>scripts\GMH_init.gml</script>
-        <scripts name="Objects">
-          <script>scripts\GMH_newController.gml</script>
-        </scripts>
+      </scripts>
+      <scripts name="Objects">
+        <script>scripts\GMH_newController.gml</script>
       </scripts>
     </scripts>
     <script>scripts\joymodel.gml</script>

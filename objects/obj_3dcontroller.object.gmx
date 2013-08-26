@@ -152,9 +152,11 @@ with (obj_hydra_joystick) {
         }
     }*/
     
-    for (i = 0; i&lt;4; i++) {
-        draw_text(10+i*50,200+ii*20,GMHD_getJoystickQuaternion(controller_id,i));
-    }
+    draw_text(10,200+controller_id*20,q0);
+    draw_text(10+1*50,200+controller_id*20,q1);
+    draw_text(10+2*50,200+controller_id*20,q2);
+    draw_text(10+3*50,200+controller_id*20,q3);
+
 }
 d3d_set_hidden(true);
 </string>

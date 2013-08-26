@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>-20</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -121,6 +121,38 @@ yt=y-sin(degtorad(direction));
 zt=z+tan(degtorad(pitch));
 //draw camera
 d3d_set_projection(x,y,z,    xt,yt,zt,   0,0,1);
+with (obj_hydrabase) {
+    event_perform(ev_draw,0);    
+}
+
+with (obj_hydra_joystick) {
+    event_perform(ev_draw,0);    
+}
+
+with (obj_floor_ceiling) {
+    event_perform(ev_draw,0);    
+}
+
+d3d_set_hidden(false);
+d3d_set_projection_ortho(0,0,view_wview,view_hview,0);
+draw_text(10,10,"FPS: "+string(fps));
+with (obj_hydra_joystick) {
+    draw_text(10,30+60*controller_id,"Joy "+string(controller_id)+" X:"+string(x));
+    draw_text(200,30+60*controller_id,"Joy "+string(controller_id)+" Y:"+string(y));
+    draw_text(400,30+60*controller_id,"Joy "+string(controller_id)+" Z:"+string(z));
+
+    draw_text(10,50+60*controller_id,"Joy "+string(controller_id)+" Roll:"+string(roll));
+    draw_text(200,50+60*controller_id,"Joy "+string(controller_id)+" Pitch:"+string(pitch));
+    draw_text(400,50+60*controller_id,"Joy "+string(controller_id)+" Yaw:"+string(yaw));
+    
+  
+    for (i = 0; i&lt;3; i++) {
+        for (ii = 0; ii&lt;3; ii++) {
+            draw_text((controller_id*200)+10+i*50,200+ii*20,GMHD_getJoystickMatrix(controller_id,i,ii));
+        }
+    }
+}
+d3d_set_hidden(true);
 </string>
           </argument>
         </arguments>

@@ -55,6 +55,7 @@ if (global._GMH_DLL_LOADED == false) {
     global._GMHD_getJoystickPitch = external_define(dllfile, 'GMH_getJoystickPitch', dll_cdecl, ty_real, 1, ty_real);
     global._GMHD_getJoystickYaw = external_define(dllfile, 'GMH_getJoystickYaw', dll_cdecl, ty_real, 1, ty_real);
     
+    global._GMHD_getJoystickMatrix = external_define(dllfile, 'GMH_getJoystickMatrix', dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
     
     //Initialize device
     if (GMHD_init() == false) {

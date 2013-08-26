@@ -1,8 +1,13 @@
 #include <sixense.h>
 #include <math.h>
+#include <G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\btMatrix3x3.h>
+
 #define GMEXPORT extern "C" __declspec (dllexport)
 
 sixenseAllControllerData acd;
+btScalar roll;
+btScalar yaw;
+btScalar pitch;
 
 GMEXPORT double GMH_updateStatus() {
 	sixenseGetAllNewestData( &acd );
@@ -20,23 +25,66 @@ GMEXPORT double GMH_getJoystickZ(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].pos[2];
 }
 
+
+
 // Pitch roll and Yaw
 GMEXPORT double GMH_getJoystickRoll(double joyIndex) {
-	double roll;
+	
+	btMatrix3x3 matrix = btMatrix3x3	(
+		acd.controllers[(int)joyIndex].rot_mat[0][0],
+		acd.controllers[(int)joyIndex].rot_mat[0][1],
+		acd.controllers[(int)joyIndex].rot_mat[0][2],
+		acd.controllers[(int)joyIndex].rot_mat[1][0],
+		acd.controllers[(int)joyIndex].rot_mat[1][1],
+		acd.controllers[(int)joyIndex].rot_mat[1][2],
+		acd.controllers[(int)joyIndex].rot_mat[2][0],
+		acd.controllers[(int)joyIndex].rot_mat[2][1],
+		acd.controllers[(int)joyIndex].rot_mat[2][2]
+	);
+
+	matrix.getRPY(roll, pitch, yaw, 1);
 
 	return (double) roll;
 }
 
 GMEXPORT double GMH_getJoystickPitch(double joyIndex) {
-	double pitch;
+	btMatrix3x3 matrix = btMatrix3x3	(
+		acd.controllers[(int)joyIndex].rot_mat[0][0],
+		acd.controllers[(int)joyIndex].rot_mat[0][1],
+		acd.controllers[(int)joyIndex].rot_mat[0][2],
+		acd.controllers[(int)joyIndex].rot_mat[1][0],
+		acd.controllers[(int)joyIndex].rot_mat[1][1],
+		acd.controllers[(int)joyIndex].rot_mat[1][2],
+		acd.controllers[(int)joyIndex].rot_mat[2][0],
+		acd.controllers[(int)joyIndex].rot_mat[2][1],
+		acd.controllers[(int)joyIndex].rot_mat[2][2]
+	);
+
+	matrix.getRPY(roll, pitch, yaw, 1);
 
 	return (double) pitch;
 }
 
 GMEXPORT double GMH_getJoystickYaw(double joyIndex) {
-	double yaw;
+	btMatrix3x3 matrix = btMatrix3x3	(
+		acd.controllers[(int)joyIndex].rot_mat[0][0],
+		acd.controllers[(int)joyIndex].rot_mat[0][1],
+		acd.controllers[(int)joyIndex].rot_mat[0][2],
+		acd.controllers[(int)joyIndex].rot_mat[1][0],
+		acd.controllers[(int)joyIndex].rot_mat[1][1],
+		acd.controllers[(int)joyIndex].rot_mat[1][2],
+		acd.controllers[(int)joyIndex].rot_mat[2][0],
+		acd.controllers[(int)joyIndex].rot_mat[2][1],
+		acd.controllers[(int)joyIndex].rot_mat[2][2]
+	);
+
+	matrix.getRPY(roll, pitch, yaw, 1);
 
 	return (double) yaw;
+}
+
+GMEXPORT double GMH_getJoystickMatrix(double joyIndex, double row, double col) {
+	return (double) acd.controllers[(int)joyIndex].rot_mat[(int)row][(int)col];
 }
 
 //General functions

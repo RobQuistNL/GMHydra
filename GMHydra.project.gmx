@@ -95,6 +95,7 @@
             <script>scripts\GMHD_getJoystickRoll.gml</script>
             <script>scripts\GMHD_getJoystickPitch.gml</script>
             <script>scripts\GMHD_getJoystickYaw.gml</script>
+            <script>scripts\GMHD_getJoystickMatrix.gml</script>
           </scripts>
           <script>scripts\GMHD_updateStatus.gml</script>
           <scripts name="Filters">

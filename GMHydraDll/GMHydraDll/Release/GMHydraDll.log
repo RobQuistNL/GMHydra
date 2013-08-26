@@ -1,17 +1,25 @@
-﻿Build started 8/26/2013 1:11:37 PM.
-     1>Project "C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" on node 2 (build target(s)).
+﻿Build started 8/26/2013 2:37:33 PM.
+     1>Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\GMHydraDll.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         All outputs are up-to-date.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IG:\HYDRA\SixenseSDK_062612\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D GMHYDRADLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GMHydraDll.cpp
+         GMHydraDll.cpp
        Link:
-         All outputs are up-to-date.
-         GMHydraDll.vcxproj -> C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\Release\GMHydraDll.dll
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:G:\HYDRA\SixenseSDK_062612\lib\win32\release_static kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\GMHydraDll.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.lib" /MACHINE:X86 /DLL Release\GMHydraDll.obj
+         G:\HYDRA\SixenseSDK_062612\lib\win32\release_dll\sixense.lib
+         G:\HYDRA\SixenseSDK_062612\lib\win32\release_dll\sixense_utils.lib
+            Creating library G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.lib and object G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.exp
+         Generating code
+         Finished generating code
+         GMHydraDll.vcxproj -> G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\Release\GMHydraDll.dll;#2" /manifest Release\GMHydraDll.dll.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Release\GMHydraDll.unsuccessfulbuild".
          Touching "Release\GMHydraDll.lastbuildstate".
-     1>Done Building Project "C:\Users\robkamer\Documents\Visual Studio 2010\Projects\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" (build target(s)).
+     1>Done Building Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.16
+Time Elapsed 00:00:01.06

@@ -145,11 +145,15 @@ with (obj_hydra_joystick) {
     draw_text(200,50+60*controller_id,"Joy "+string(controller_id)+" Pitch:"+string(pitch));
     draw_text(400,50+60*controller_id,"Joy "+string(controller_id)+" Yaw:"+string(yaw));
     
-  
-    for (i = 0; i&lt;3; i++) {
+    //Matrix
+/*    for (i = 0; i&lt;3; i++) {
         for (ii = 0; ii&lt;3; ii++) {
             draw_text((controller_id*200)+10+i*50,200+ii*20,GMHD_getJoystickMatrix(controller_id,i,ii));
         }
+    }*/
+    
+    for (i = 0; i&lt;4; i++) {
+        draw_text(10+i*50,200+ii*20,GMHD_getJoystickQuaternion(controller_id,i));
     }
 }
 d3d_set_hidden(true);

@@ -57,6 +57,8 @@ if (global._GMH_DLL_LOADED == false) {
     
     global._GMHD_getJoystickMatrix = external_define(dllfile, 'GMH_getJoystickMatrix', dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
     
+    global._GMHD_getJoystickQuaternion = external_define(dllfile, 'GMH_getJoystickQuaternion', dll_cdecl, ty_real, 2, ty_real, ty_real);
+    
     //Initialize device
     if (GMHD_init() == false) {
         show_debug_message("Razer Hydra support disabled.");

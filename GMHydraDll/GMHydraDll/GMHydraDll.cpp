@@ -59,19 +59,19 @@ float3 eulerAngles(double joyIndex) {
 
         //choose one solution to return
         //for example the "shortest" rotation
-        if ((std::abs(x1) + std::abs(y1) + std::abs(z1)) <= (std::abs(x2) + std::abs(y2) + std::abs(z2))) {
+        //if ((std::abs(x1) + std::abs(y1) + std::abs(z1)) <= (std::abs(x2) + std::abs(y2) + std::abs(z2))) {
             float3 returnvalue;
 			returnvalue[0]=x1;
 			returnvalue[1]=y1;
 			returnvalue[2]=z1;
 			return returnvalue;
-        } else {
-            float3 returnvalue;
-			returnvalue[0]=x2;
-			returnvalue[1]=y2;
-			returnvalue[2]=z2;
-			return returnvalue;
-        }
+        //} else {
+        //    float3 returnvalue;
+		//	returnvalue[0]=x2;
+		//	returnvalue[1]=y2;
+		//	returnvalue[2]=z2;
+		//	return returnvalue;
+       // }
     }
 }
 
@@ -111,6 +111,10 @@ GMEXPORT double GMH_getJoystickYaw(double joyIndex) {
 
 GMEXPORT double GMH_getJoystickMatrix(double joyIndex, double row, double col) {
 	return (double) acd.controllers[(int)joyIndex].rot_mat[(int)row][(int)col];
+}
+
+GMEXPORT double GMH_getJoystickQuaternion(double joyIndex, double index) {
+	return (double) acd.controllers[(int)joyIndex].rot_quat[(int)index];
 }
 
 //General functions

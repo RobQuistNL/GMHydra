@@ -31,7 +31,7 @@ roll = 0;
 pitch = 0;
 yaw = 0;
 
-
+init_quaternion();
 </string>
           </argument>
         </arguments>
@@ -58,33 +58,20 @@ yaw = 0;
 y = GMHD_getJoystickZ(controller_id)/2 + obj_hydrabase.y;
 z = GMHD_getJoystickY(controller_id)/2;
 
-yaw = radtodeg(GMHD_getJoystickYaw(controller_id));
-pitch = radtodeg(GMHD_getJoystickPitch(controller_id));
-roll = radtodeg(GMHD_getJoystickRoll(controller_id));
+//yaw = radtodeg(GMHD_getJoystickYaw(controller_id));
+//pitch = radtodeg(GMHD_getJoystickPitch(controller_id));
+//roll = radtodeg(GMHD_getJoystickRoll(controller_id));
 
-//d3dproj();
-//yaw = 90;
-//pitch = 90;
-//roll = 0;
 d3d_transform_set_identity();
-d3d_transform_add_rotation_y(roll);
-d3d_transform_add_rotation_x(pitch);
-d3d_transform_add_rotation_z(yaw);
+//d3d_transform_add_rotation_z(yaw);
+//d3d_transform_add_rotation_x(pitch);
+//d3d_transform_add_rotation_y(roll);
+d3d_set_rotation_quaternion(q0,q1,q2,q3);
+
 d3d_transform_add_translation(x,y,z);
 d3d_model_draw(global.joystick,0,0,0,tex_test);
 d3d_transform_set_identity();
-/*
-d3d_set_projection_ortho(0,0,view_wview,view_hview,0);
-draw_text(10,30+60*controller_id,"Joy "+string(controller_id)+" X:"+string(x));
-draw_text(200,30+60*controller_id,"Joy "+string(controller_id)+" Y:"+string(y));
-draw_text(400,30+60*controller_id,"Joy "+string(controller_id)+" Z:"+string(z));
 
-draw_text(10,50+60*controller_id,"Joy "+string(controller_id)+" Roll:"+string(roll));
-draw_text(200,50+60*controller_id,"Joy "+string(controller_id)+" Pitch:"+string(pitch));
-draw_text(400,50+60*controller_id,"Joy "+string(controller_id)+" Yaw:"+string(yaw));
-
-image_angle=yaw;
-*/
 </string>
           </argument>
         </arguments>

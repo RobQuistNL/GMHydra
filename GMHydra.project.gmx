@@ -96,6 +96,7 @@
             <script>scripts\GMHD_getJoystickPitch.gml</script>
             <script>scripts\GMHD_getJoystickYaw.gml</script>
             <script>scripts\GMHD_getJoystickMatrix.gml</script>
+            <script>scripts\GMHD_getJoystickQuaternion.gml</script>
           </scripts>
           <script>scripts\GMHD_updateStatus.gml</script>
           <scripts name="Filters">
@@ -112,6 +113,29 @@
           <script>scripts\GMH_initDefaults.gml</script>
         </scripts>
         <script>scripts\GMH_init.gml</script>
+        <scripts name="Usefull">
+          <script>scripts\quaternion_documentation_placeholder.gml</script>
+          <script>scripts\d3d_quaternion_set_projection_neg.gml</script>
+          <script>scripts\d3d_quaternion_set_projection.gml</script>
+          <script>scripts\d3d_quaternion_set_projection_neg_ext.gml</script>
+          <script>scripts\d3d_quaternion_set_projection_ext.gml</script>
+          <script>scripts\d3d_quaternion_light_direction_neg.gml</script>
+          <script>scripts\d3d_quaternion_light_direction.gml</script>
+          <script>scripts\d3d_add_rotation_quaternion.gml</script>
+          <script>scripts\d3d_set_rotation_quaternion.gml</script>
+          <script>scripts\quaternion_ball_roll_simple.gml</script>
+          <script>scripts\init_quaternion.gml</script>
+          <script>scripts\init_quaternion_random.gml</script>
+          <script>scripts\normalise_quaternion.gml</script>
+          <script>scripts\quaternion_fly_roll.gml</script>
+          <script>scripts\quaternion_fly_pitch.gml</script>
+          <script>scripts\quaternion_fly_yaw.gml</script>
+          <script>scripts\quaternion_rotate_vector.gml</script>
+          <script>scripts\sinc.gml</script>
+          <script>scripts\multiply_quaternion.gml</script>
+          <script>scripts\multiply_quaternion_left.gml</script>
+          <script>scripts\multiply_quaternion_right.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <script>scripts\d3dproj.gml</script>

@@ -71,6 +71,16 @@
           <script>scripts\GMHD_setActiveBase.gml</script>
           <script>scripts\GMHD_getNumActiveControllers.gml</script>
           <script>scripts\GMHD_checkDllLoaded.gml</script>
+          <script>scripts\GMHD_updateStatus.gml</script>
+          <scripts name="Filters">
+            <script>scripts\GMHD_setFilterEnabled.gml</script>
+            <script>scripts\GMHD_setFilterParams.gml</script>
+            <script>scripts\GMHD_getFilterEnabled.gml</script>
+            <script>scripts\GMHD_getFilterNearRange.gml</script>
+            <script>scripts\GMHD_getFilterNearVal.gml</script>
+            <script>scripts\GMHD_getFilterFarRange.gml</script>
+            <script>scripts\GMHD_getFilterFarVal.gml</script>
+          </scripts>
           <scripts name="Joysticks">
             <scripts name="Position &amp; Orientation">
               <script>scripts\GMHD_getJoystickQuaternion.gml</script>
@@ -82,24 +92,27 @@
               <script>scripts\GMHD_getJoystickX.gml</script>
               <script>scripts\GMHD_getJoystickY.gml</script>
             </scripts>
-          </scripts>
-          <script>scripts\GMHD_updateStatus.gml</script>
-          <scripts name="Filters">
-            <script>scripts\GMHD_setFilterEnabled.gml</script>
-            <script>scripts\GMHD_setFilterParams.gml</script>
-            <script>scripts\GMHD_getFilterEnabled.gml</script>
-            <script>scripts\GMHD_getFilterNearRange.gml</script>
-            <script>scripts\GMHD_getFilterNearVal.gml</script>
-            <script>scripts\GMHD_getFilterFarRange.gml</script>
-            <script>scripts\GMHD_getFilterFarVal.gml</script>
+            <scripts name="Buttons &amp; Stick">
+              <script>scripts\GMHD_getJoystickTrigger.gml</script>
+              <script>scripts\GMHD_getJoystickButtons.gml</script>
+              <script>scripts\GMHD_getJoystickStickX.gml</script>
+              <script>scripts\GMHD_getJoystickStickY.gml</script>
+            </scripts>
+            <scripts name="Others">
+              <script>scripts\GMHD_getJoystickIsDocked.gml</script>
+              <script>scripts\GMHD_getJoystickWhichHand.gml</script>
+            </scripts>
           </scripts>
         </scripts>
         <scripts name="Initialisation">
           <script>scripts\GMH_initDefaults.gml</script>
         </scripts>
-        <script>scripts\GMH_init.gml</script>
         <scripts name="Calibration">
           <script>scripts\GMHD_calibrateRotation.gml</script>
+        </scripts>
+        <script>scripts\GMH_init.gml</script>
+        <scripts name="Objects">
+          <script>scripts\GMH_newController.gml</script>
         </scripts>
       </scripts>
     </scripts>

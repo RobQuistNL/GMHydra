@@ -46,19 +46,24 @@ if (global._GMH_DLL_LOADED == false) {
     global._GMHD_getFilterFarVal = external_define(dllfile, 'GMH_getFilterFarVal', dll_cdecl, ty_real, 0);
     /// JOYSTICKS
     global._GMHD_updateStatus = external_define(dllfile, 'GMH_updateStatus', dll_cdecl, ty_real, 0);
-    //Joystick X and  Y
+    // Joystick Position & Orientation
     global._GMHD_getJoystickX = external_define(dllfile, 'GMH_getJoystickX', dll_cdecl, ty_real, 1, ty_real);
     global._GMHD_getJoystickY = external_define(dllfile, 'GMH_getJoystickY', dll_cdecl, ty_real, 1, ty_real);
     global._GMHD_getJoystickZ = external_define(dllfile, 'GMH_getJoystickZ', dll_cdecl, ty_real, 1, ty_real);
-    
     global._GMHD_getJoystickRoll = external_define(dllfile, 'GMH_getJoystickRoll', dll_cdecl, ty_real, 1, ty_real);
     global._GMHD_getJoystickPitch = external_define(dllfile, 'GMH_getJoystickPitch', dll_cdecl, ty_real, 1, ty_real);
     global._GMHD_getJoystickYaw = external_define(dllfile, 'GMH_getJoystickYaw', dll_cdecl, ty_real, 1, ty_real);
-    
     global._GMHD_getJoystickMatrix = external_define(dllfile, 'GMH_getJoystickMatrix', dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
-    
     global._GMHD_getJoystickQuaternion = external_define(dllfile, 'GMH_getJoystickQuaternion', dll_cdecl, ty_real, 2, ty_real, ty_real);
-    
+    // Joystick buttons and stick
+    global._GMHD_getJoystickStickX = external_define(dllfile, 'GMH_getJoystickStickX', dll_cdecl, ty_real, 1, ty_real);
+    global._GMHD_getJoystickStickY = external_define(dllfile, 'GMH_getJoystickStickY', dll_cdecl, ty_real, 1, ty_real);
+    global._GMHD_getJoystickButtons = external_define(dllfile, 'GMH_getJoystickButtons', dll_cdecl, ty_real, 1, ty_real);
+    global._GMHD_getJoystickTrigger = external_define(dllfile, 'GMH_getJoystickTrigger', dll_cdecl, ty_real, 1, ty_real);
+    // Joystick others
+    global._GMHD_getJoystickIsDocked = external_define(dllfile, 'GMH_getJoystickIsDocked', dll_cdecl, ty_real, 1, ty_real);
+    global._GMHD_getJoystickWhichHand = external_define(dllfile, 'GMH_getJoystickWhichHand', dll_cdecl, ty_real, 1, ty_real);
+            
     //Initialize device
     if (GMHD_init() == false) {
         show_debug_message("Razer Hydra support disabled.");

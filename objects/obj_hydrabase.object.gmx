@@ -166,8 +166,7 @@ show_message("Filter:"+string(filter));
             show_message("No active controllers found!");
         } else {
             for (i=0; i&lt;controllers; i++) {
-                controller_array[i] = instance_create(0,0,obj_hydra_joystick);
-                controller_array[i].controller_id = i;
+                controller_array[i] = GMH_newController(i);
             }
         }
     } else {

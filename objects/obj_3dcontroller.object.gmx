@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>z = 100
+            <string>debuginfo = 0;
+
+z = 100
 pitch = -3;
 direction = 180;
 
@@ -136,29 +138,85 @@ with (obj_floor_ceiling) {
 d3d_set_hidden(false);
 d3d_set_projection_ortho(0,0,view_wview,view_hview,0);
 draw_text(10,10,"FPS: "+string(fps));
-with (obj_hydra_joystick) {
-    draw_text(10,30+60*controller_id,"Joy "+string(controller_id)+" X:"+string(x));
-    draw_text(200,30+60*controller_id,"Joy "+string(controller_id)+" Y:"+string(y));
-    draw_text(400,30+60*controller_id,"Joy "+string(controller_id)+" Z:"+string(z));
 
-    draw_text(10,50+60*controller_id,"Joy "+string(controller_id)+" Roll:"+string(roll));
-    draw_text(200,50+60*controller_id,"Joy "+string(controller_id)+" Pitch:"+string(pitch));
-    draw_text(400,50+60*controller_id,"Joy "+string(controller_id)+" Yaw:"+string(yaw));
-    
-    //Matrix
-/*    for (i = 0; i&lt;3; i++) {
-        for (ii = 0; ii&lt;3; ii++) {
-            draw_text((controller_id*200)+10+i*50,200+ii*20,GMHD_getJoystickMatrix(controller_id,i,ii));
+switch (debuginfo) {
+    case 0:
+        draw_text(10,30,"Press P to cycle through debug info.##Calibrate:#Hold controllers facing forward#next to each other.#Press space");
+        break;
+    case 1:
+        draw_text(10,30,"Location and orientation:");
+        with (obj_hydra_joystick) {
+            draw_text(10,70+60*controller_id,"Joy "+string(controller_id)+" X:"+string(x));
+            draw_text(200,70+60*controller_id,"Joy "+string(controller_id)+" Y:"+string(y));
+            draw_text(400,70+60*controller_id,"Joy "+string(controller_id)+" Z:"+string(z));
+        
+            draw_text(10,90+60*controller_id,"Joy "+string(controller_id)+" Roll:"+string(roll));
+            draw_text(200,90+60*controller_id,"Joy "+string(controller_id)+" Pitch:"+string(pitch));
+            draw_text(400,90+60*controller_id,"Joy "+string(controller_id)+" Yaw:"+string(yaw));
+            draw_text(10,200,"Quaternion values:");
+            draw_text(10,220+controller_id*20,q0);
+            draw_text(10+1*50,220+controller_id*20,q1);
+            draw_text(10+2*50,220+controller_id*20,q2);
+            draw_text(10+3*50,220+controller_id*20,q3);
+            //Matrix
+            /*
+            for (i = 0; i&lt;3; i++) {
+                for (ii = 0; ii&lt;3; ii++) {
+                    draw_text((controller_id*200)+10+i*50,200+ii*20,GMHD_getJoystickMatrix(controller_id,i,ii));
+                }
+            }
+            */
         }
-    }*/
-    
-    draw_text(10,200+controller_id*20,q0);
-    draw_text(10+1*50,200+controller_id*20,q1);
-    draw_text(10+2*50,200+controller_id*20,q2);
-    draw_text(10+3*50,200+controller_id*20,q3);
-
+        break;
+    case 2:
+        draw_text(10,30,"Buttons:");
+        with (obj_hydra_joystick) {
+            draw_text(10,50+250*controller_id,"Joy "+string(controller_id)+" Trigger: "+string(trigger));
+            draw_text(10,70+250*controller_id,"Joy "+string(controller_id)+" Buttons: "+string(buttons));
+            draw_text(10,90+250*controller_id,"Joy "+string(controller_id)+" StickX: "+string(joystick_x) + " StickY: " + string(joystick_y));
+            draw_text(10,110+250*controller_id,"Joy "+string(controller_id)+" IsDocked: "+string(is_docked)+" WhichHand: "+string(which_hand));
+            
+            
+            
+            //Matrix
+            /*
+            for (i = 0; i&lt;3; i++) {
+                for (ii = 0; ii&lt;3; ii++) {
+                    draw_text((controller_id*200)+10+i*50,200+ii*20,GMHD_getJoystickMatrix(controller_id,i,ii));
+                }
+            }
+            */
+        }
+        break;
 }
+
 d3d_set_hidden(true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="80">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>debuginfo++;
+if (debuginfo &gt; 2) {
+    debuginfo = 0;
+}
 </string>
           </argument>
         </arguments>

@@ -25,17 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>z=0;
-
-roll = 0;
-pitch = 0;
-yaw = 0;
-
-q0=0;
-q1=0;
-q2=0;
-q3=0;
-</string>
+            <string>  </string>
           </argument>
         </arguments>
       </action>
@@ -57,12 +47,14 @@ q3=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = GMHD_getJoystickX(controller_id)/2 + obj_hydrabase.x;
+            <string>/// Update the data and draw the model
+
+// Position
+x = GMHD_getJoystickX(controller_id)/2 + obj_hydrabase.x;
 y = GMHD_getJoystickZ(controller_id)/2 + obj_hydrabase.y;
 z = GMHD_getJoystickY(controller_id)/2;
 
-d3d_transform_set_identity();
-
+// Orientation
 q0 = GMHD_getJoystickQuaternion(controller_id,0); //p
 q1 = GMHD_getJoystickQuaternion(controller_id,1); //y
 q2 = GMHD_getJoystickQuaternion(controller_id,2); //r
@@ -73,15 +65,27 @@ q1 = q1 + global._GMH_q1Offset[controller_id];
 q2 = q2 + global._GMH_q2Offset[controller_id];
 q3 = q3 + global._GMH_q3Offset[controller_id];
 
-//d3d_add_rotation_quaternion(q0,q1,q2,q3);
-d3d_transform_add_rotation_x(q0*180);
-d3d_transform_add_rotation_z(q1*180);
-d3d_transform_add_rotation_y(q2*180);
+// Buttons
+buttons = GMHD_getJoystickButtons(controller_id);
+trigger = GMHD_getJoystickTrigger(controller_id);
 
-d3d_transform_add_translation(x,y,z);
-d3d_model_draw(global.joystick,0,0,0,tex_test);
+// Stick
+joystick_x = GMHD_getJoystickStickX(controller_id);
+joystick_y = GMHD_getJoystickStickY(controller_id);
+
+// Others
+is_docked = GMHD_getJoystickIsDocked(controller_id);
+which_hand = GMHD_getJoystickWhichHand(controller_id);
+
+// Draw model
 d3d_transform_set_identity();
-
+    d3d_transform_add_rotation_x(q0*180);
+    d3d_transform_add_rotation_z(q1*180);
+    d3d_transform_add_rotation_y(q2*180);
+    
+    d3d_transform_add_translation(x,y,z);
+    d3d_model_draw(global.joystick,0,0,0,tex_test);
+d3d_transform_set_identity();
 </string>
           </argument>
         </arguments>

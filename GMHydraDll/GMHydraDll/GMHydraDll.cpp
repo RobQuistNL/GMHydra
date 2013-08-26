@@ -1,13 +1,79 @@
 #include <sixense.h>
 #include <math.h>
-#include <G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\btMatrix3x3.h>
+#include <array>
+#include <limits>
 
 #define GMEXPORT extern "C" __declspec (dllexport)
 
+typedef std::array<float, 3> float3;
+typedef std::array<float3, 3> float3x3;
+
+const float PI = 3.14159265358979323846264f;
+
 sixenseAllControllerData acd;
-btScalar roll;
-btScalar yaw;
-btScalar pitch;
+
+bool closeEnough(const float& a, const float& b, const float& epsilon = std::numeric_limits<float>::epsilon()) {
+    return (epsilon > std::abs(a - b));
+}
+
+float3 eulerAngles(double joyIndex) {
+	float3x3 R;
+	R[0][0] = acd.controllers[(int)joyIndex].rot_mat[0][0];
+	R[0][1] = acd.controllers[(int)joyIndex].rot_mat[0][1];
+	R[0][2] = acd.controllers[(int)joyIndex].rot_mat[0][2];
+	R[1][0] = acd.controllers[(int)joyIndex].rot_mat[1][0];
+	R[1][1] = acd.controllers[(int)joyIndex].rot_mat[1][1];
+	R[1][2] = acd.controllers[(int)joyIndex].rot_mat[1][2];
+	R[2][0] = acd.controllers[(int)joyIndex].rot_mat[2][0];
+	R[2][1] = acd.controllers[(int)joyIndex].rot_mat[2][1];
+	R[2][2] = acd.controllers[(int)joyIndex].rot_mat[2][2];
+
+    //check for gimbal lock
+    if (closeEnough(R[0][2], -1.0f)) {
+        float x = 0; //gimbal lock, value of x doesn't matter
+        float y = PI / 2;
+        float z = x + atan2(R[1][0], R[2][0]);
+        float3 returnvalue;
+		returnvalue[0]=x;
+		returnvalue[1]=y;
+		returnvalue[2]=z;
+        return returnvalue;
+    } else if (closeEnough(R[0][2], 1.0f)) {
+        float x = 0;
+        float y = -PI / 2;
+        float z = -x + atan2(-R[1][0], -R[2][0]);
+		float3 returnvalue;
+		returnvalue[0]=x;
+		returnvalue[1]=y;
+		returnvalue[2]=z;
+        return returnvalue;
+    } else { //two solutions exist
+        float x1 = -asin(R[0][2]);
+        float x2 = PI - x1;
+
+        float y1 = atan2(R[1][2] / cos(x1), R[2][2] / cos(x1));
+        float y2 = atan2(R[1][2] / cos(x2), R[2][2] / cos(x2));
+
+        float z2 = atan2(R[0][1] / cos(x2), R[0][0] / cos(x2));
+        float z1 = atan2(R[0][1] / cos(x1), R[0][0] / cos(x1));
+
+        //choose one solution to return
+        //for example the "shortest" rotation
+        if ((std::abs(x1) + std::abs(y1) + std::abs(z1)) <= (std::abs(x2) + std::abs(y2) + std::abs(z2))) {
+            float3 returnvalue;
+			returnvalue[0]=x1;
+			returnvalue[1]=y1;
+			returnvalue[2]=z1;
+			return returnvalue;
+        } else {
+            float3 returnvalue;
+			returnvalue[0]=x2;
+			returnvalue[1]=y2;
+			returnvalue[2]=z2;
+			return returnvalue;
+        }
+    }
+}
 
 GMEXPORT double GMH_updateStatus() {
 	sixenseGetAllNewestData( &acd );
@@ -29,58 +95,18 @@ GMEXPORT double GMH_getJoystickZ(double joyIndex) {
 
 // Pitch roll and Yaw
 GMEXPORT double GMH_getJoystickRoll(double joyIndex) {
-	
-	btMatrix3x3 matrix = btMatrix3x3	(
-		acd.controllers[(int)joyIndex].rot_mat[0][0],
-		acd.controllers[(int)joyIndex].rot_mat[0][1],
-		acd.controllers[(int)joyIndex].rot_mat[0][2],
-		acd.controllers[(int)joyIndex].rot_mat[1][0],
-		acd.controllers[(int)joyIndex].rot_mat[1][1],
-		acd.controllers[(int)joyIndex].rot_mat[1][2],
-		acd.controllers[(int)joyIndex].rot_mat[2][0],
-		acd.controllers[(int)joyIndex].rot_mat[2][1],
-		acd.controllers[(int)joyIndex].rot_mat[2][2]
-	);
-
-	matrix.getRPY(roll, pitch, yaw, 1);
-
-	return (double) roll;
+	float3 returned = eulerAngles(joyIndex);
+	return (double) returned[2];
 }
 
 GMEXPORT double GMH_getJoystickPitch(double joyIndex) {
-	btMatrix3x3 matrix = btMatrix3x3	(
-		acd.controllers[(int)joyIndex].rot_mat[0][0],
-		acd.controllers[(int)joyIndex].rot_mat[0][1],
-		acd.controllers[(int)joyIndex].rot_mat[0][2],
-		acd.controllers[(int)joyIndex].rot_mat[1][0],
-		acd.controllers[(int)joyIndex].rot_mat[1][1],
-		acd.controllers[(int)joyIndex].rot_mat[1][2],
-		acd.controllers[(int)joyIndex].rot_mat[2][0],
-		acd.controllers[(int)joyIndex].rot_mat[2][1],
-		acd.controllers[(int)joyIndex].rot_mat[2][2]
-	);
-
-	matrix.getRPY(roll, pitch, yaw, 1);
-
-	return (double) pitch;
+	float3 returned = eulerAngles(joyIndex);
+	return (double) returned[1];
 }
 
 GMEXPORT double GMH_getJoystickYaw(double joyIndex) {
-	btMatrix3x3 matrix = btMatrix3x3	(
-		acd.controllers[(int)joyIndex].rot_mat[0][0],
-		acd.controllers[(int)joyIndex].rot_mat[0][1],
-		acd.controllers[(int)joyIndex].rot_mat[0][2],
-		acd.controllers[(int)joyIndex].rot_mat[1][0],
-		acd.controllers[(int)joyIndex].rot_mat[1][1],
-		acd.controllers[(int)joyIndex].rot_mat[1][2],
-		acd.controllers[(int)joyIndex].rot_mat[2][0],
-		acd.controllers[(int)joyIndex].rot_mat[2][1],
-		acd.controllers[(int)joyIndex].rot_mat[2][2]
-	);
-
-	matrix.getRPY(roll, pitch, yaw, 1);
-
-	return (double) yaw;
+	float3 returned = eulerAngles(joyIndex);
+	return (double) returned[0];
 }
 
 GMEXPORT double GMH_getJoystickMatrix(double joyIndex, double row, double col) {

@@ -130,7 +130,7 @@ GMEXPORT double GMH_getJoystickStickX(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].joystick_x;
 }
 
-GMEXPORT double GMH_getJoystickStickX(double joyIndex) {
+GMEXPORT double GMH_getJoystickStickY(double joyIndex) {
 	return (double) acd.controllers[(int)joyIndex].joystick_y;
 }
 

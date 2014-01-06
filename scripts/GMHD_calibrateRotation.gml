@@ -1,8 +1,10 @@
 // Make sure the controllers are facing towards the screen, completely flat, next to each other.
-// arg0 = joystick
-if (GMHD_checkDllLoaded() == false) {return false;}
+// arg0 = controller_id
+// arg1 = pitch
+// arg2 = yaw
+// arg3 = roll
 
-global._GMH_q0Offset[argument0] = -GMHD_getJoystickQuaternion(argument0,0);
-global._GMH_q1Offset[argument0] = -GMHD_getJoystickQuaternion(argument0,1);
-global._GMH_q2Offset[argument0] = -GMHD_getJoystickQuaternion(argument0,2);
-global._GMH_q3Offset[argument0] = -GMHD_getJoystickQuaternion(argument0,3);
+if (GMHD_checkDllLoaded() == false) {return false;}
+global._GMH_pitchOffset[argument0] = -argument1;
+global._GMH_yawOffset[argument0] = -argument2;
+global._GMH_rollOffset[argument0] = -argument3;

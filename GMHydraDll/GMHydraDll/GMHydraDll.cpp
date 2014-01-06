@@ -10,7 +10,17 @@ typedef std::array<float3, 3> float3x3;
 
 const float PI = 3.14159265358979323846264f;
 
+std::string VERSION = "0.1";
+std::string RetString;
+
 sixenseAllControllerData acd;
+
+template <typename T>
+std::string to_string(const T & value) {
+    std::stringstream sstr;
+    sstr << value;
+    return sstr.str();
+}
 
 bool closeEnough(const float& a, const float& b, const float& epsilon = std::numeric_limits<float>::epsilon()) {
     return (epsilon > std::abs(a - b));
@@ -59,25 +69,29 @@ float3 eulerAngles(double joyIndex) {
 
         //choose one solution to return
         //for example the "shortest" rotation
-        //if ((std::abs(x1) + std::abs(y1) + std::abs(z1)) <= (std::abs(x2) + std::abs(y2) + std::abs(z2))) {
+        if ((std::abs(x1) + std::abs(y1) + std::abs(z1)) <= (std::abs(x2) + std::abs(y2) + std::abs(z2))) {
             float3 returnvalue;
 			returnvalue[0]=x1;
 			returnvalue[1]=y1;
 			returnvalue[2]=z1;
 			return returnvalue;
-        //} else {
-        //    float3 returnvalue;
-		//	returnvalue[0]=x2;
-		//	returnvalue[1]=y2;
-		//	returnvalue[2]=z2;
-		//	return returnvalue;
-       // }
+        } else {
+            float3 returnvalue;
+			returnvalue[0]=x2;
+			returnvalue[1]=y2;
+			returnvalue[2]=z2;
+			return returnvalue;
+        }
     }
 }
 
 GMEXPORT double GMH_updateStatus() {
 	sixenseGetAllNewestData( &acd );
 	return (double)1;
+}
+
+GMEXPORT const char * GMH_getVersion() {
+	return VERSION.c_str();
 }
 
 // Joystick POSITION
@@ -191,7 +205,8 @@ GMEXPORT double GMH_setHemisphereTrackingMode(double which, double state) {
 
 GMEXPORT double GMH_getHemisphereTrackingMode(double which) {
 	int state;
-	return (double)sixenseGetHemisphereTrackingMode((int) which, &state);
+	sixenseGetHemisphereTrackingMode((int) which, &state);
+	return (double)state;
 }
 
 GMEXPORT double GMH_setHighPriorityBindingEnabled(double on_or_off) {
@@ -209,12 +224,13 @@ GMEXPORT double GMH_triggerVibration(double controller_id, double duration_100ms
 
 //Filters
 GMEXPORT double GMH_setFilterEnabled(double on_or_off) {
-	return (double)sixenseSetHighPriorityBindingEnabled((int) on_or_off);
+	return (double)sixenseSetFilterEnabled((int) on_or_off);
 }
 
 GMEXPORT double GMH_getFilterEnabled() {
 	int on_or_off;
-	return (double)sixenseGetFilterEnabled(&on_or_off);
+	sixenseGetFilterEnabled(&on_or_off);
+	return (double)on_or_off;
 }
 
 GMEXPORT double GMH_setFilterParams(double near_range, double near_val, double far_range, double far_val) {

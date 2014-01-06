@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>d3d_draw_floor(0,0,-400,room_width,room_height,-400,global.texture_floor,20,20);
+            <string>d3d_draw_floor(0,0,0,room_width,room_height,0,global.texture_floor,20,20);
 d3d_draw_floor(0,0,400,room_width,room_height,400,global.texture_floor,20,20);
 
 </string>

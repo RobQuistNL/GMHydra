@@ -25,12 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>getxy = false;
+            <string>global.testlol = 0;
+calibration = 0;
+calibrationString = '';
+
+
+getxy = false;
 controllers = 0;
 filter = false;
 
 GMH_init();
-joymodel();
+loadModels();
 
 
 </string>
@@ -58,6 +63,8 @@ joymodel();
             <string>if (controllers &gt; 0) {
     GMHD_updateStatus(); //Fetch latest info from controllers
 }
+
+GMHD_calibrationStep();
 </string>
           </argument>
         </arguments>
@@ -108,6 +115,32 @@ d3d_draw_cone(x-5,y-5,0,x,y,10,tex_test,1,1,1,36);
             <kind>1</kind>
             <string>GMHD_autoEnableHemisphereTracking(0);
 GMHD_autoEnableHemisphereTracking(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="81">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.testlol++
+if (global.testlol==24) {
+   global.testlol = 0;
+}
 </string>
           </argument>
         </arguments>

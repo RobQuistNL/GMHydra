@@ -21,6 +21,7 @@ if (global._GMH_DLL_LOADED == false) {
     
     // Define externals
     global._GMHD_init = external_define(dllfile, 'GMH_init', dll_cdecl, ty_real, 0);
+    global._GMHD_getVersion = external_define(dllfile, 'GMH_getVersion', dll_cdecl, ty_string, 0);
     global._GMHD_destroy = external_define(dllfile, 'GMH_destroy', dll_cdecl, ty_real, 0);
     global._GMHD_getMaxBases = external_define(dllfile, 'GMH_getMaxBases', dll_cdecl, ty_real, 0);
     global._GMHD_getNumActiveControllers = external_define(dllfile, 'GMH_getNumActiveControllers', dll_cdecl, ty_real, 0);

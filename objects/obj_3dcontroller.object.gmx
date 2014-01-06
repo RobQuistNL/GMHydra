@@ -25,11 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>debuginfo = 0;
+            <string>display_mouse_set(display_get_width() / 2, display_get_height() / 2); 
+debuginfo = 0;
 
-z = 100
-pitch = -3;
-direction = 180;
+x = 172
+y = 496
+z = 180
+pitch = -13.5;
+direction = 90;
 
 //Start 3D
 d3d_start();
@@ -137,7 +140,7 @@ with (obj_floor_ceiling) {
 
 d3d_set_hidden(false);
 d3d_set_projection_ortho(0,0,view_wview,view_hview,0);
-draw_text(10,10,"FPS: "+string(fps));
+draw_text(10,10,"FPS: "+string(fps)+"testlol = " +string(global.testlol));
 
 switch (debuginfo) {
     case 0:
@@ -167,6 +170,7 @@ switch (debuginfo) {
             }
             */
         }
+        draw_text(10+4*50,220+20,"Combination: " +string(global.testlol));
         break;
     case 2:
         draw_text(10,30,"Buttons:");
@@ -188,6 +192,33 @@ switch (debuginfo) {
             */
         }
         break;
+        
+     case 3:
+        draw_text(10,30,"Calibration:");
+        with (obj_hydra_joystick) {
+            draw_text(10,20+20*controller_id,"Joy "+string(controller_id)+" REAL X:"+string(GMHD_getJoystickX(controller_id)));
+            draw_text(500,20+20*controller_id,"Joy "+string(controller_id)+" REAL Y:"+string(GMHD_getJoystickY(controller_id)));
+            draw_text(1000,20+20*controller_id,"Joy "+string(controller_id)+" REAL Z:"+string(GMHD_getJoystickZ(controller_id)));
+            
+            draw_text(100,50+20*controller_id,"Joy "+string(controller_id)+" NORM X:"+string(GMHD_getNormalizedJoystickX(controller_id)));
+            draw_text(500,50+20*controller_id,"Joy "+string(controller_id)+" NORM Y:"+string(GMHD_getNormalizedJoystickY(controller_id)));
+            draw_text(1000,50+20*controller_id,"Joy "+string(controller_id)+" NORM Z:"+string(GMHD_getNormalizedJoystickZ(controller_id)));
+            
+            
+            
+            draw_text(10,100+70*controller_id,"Joy "+string(controller_id)+" minX: "+string(global._GMH_xMin[controller_id]));
+            draw_text(300,100+70*controller_id,"Joy "+string(controller_id)+" maxX: "+string(global._GMH_xMax[controller_id]));
+            draw_text(10,120+70*controller_id,"Joy "+string(controller_id)+" minY: "+string(global._GMH_yMin[controller_id]));
+            draw_text(300,120+70*controller_id,"Joy "+string(controller_id)+" maxY: "+string(global._GMH_yMax[controller_id]));
+            draw_text(10,140+70*controller_id,"Joy "+string(controller_id)+" minZ: "+string(global._GMH_zMin[controller_id]));
+            draw_text(300,140+70*controller_id,"Joy "+string(controller_id)+" maxZ: "+string(global._GMH_zMax[controller_id]));
+        }
+        
+        draw_text(900,10,obj_hydrabase.calibrationString);
+        
+        break;
+        
+        
 }
 
 d3d_set_hidden(true);
@@ -214,7 +245,7 @@ d3d_set_hidden(true);
           <argument>
             <kind>1</kind>
             <string>debuginfo++;
-if (debuginfo &gt; 2) {
+if (debuginfo &gt; 3) {
     debuginfo = 0;
 }
 </string>

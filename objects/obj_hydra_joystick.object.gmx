@@ -8,28 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>  </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -76,19 +54,195 @@
 
 // Position
 x = GMHD_getJoystickX(controller_id)/2 + obj_hydrabase.x;
-y = GMHD_getJoystickZ(controller_id)/2 + obj_hydrabase.y;
-z = GMHD_getJoystickY(controller_id)/2;
+y = GMHD_getJoystickY(controller_id)/2 + obj_hydrabase.y;
+z = GMHD_getNormalizedJoystickZ(controller_id);
 
 // Orientation
-q0 = GMHD_getJoystickQuaternion(controller_id,0); //p
-q1 = GMHD_getJoystickQuaternion(controller_id,1); //y
-q2 = GMHD_getJoystickQuaternion(controller_id,2); //r
+switch (global.testlol) {
+case 0:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
 q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
 
-q0 = q0 + global._GMH_q0Offset[controller_id];
-q1 = q1 + global._GMH_q1Offset[controller_id];
-q2 = q2 + global._GMH_q2Offset[controller_id];
-q3 = q3 + global._GMH_q3Offset[controller_id];
+case 1:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 2:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 3:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
+
+case 4:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 5:
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 6:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
+
+case 7:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 8:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+case 9:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
+
+case 10:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 11:
+q0 = GMHD_getJoystickQuaternion(controller_id,1);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+case 12:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
+
+case 13:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 14:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,3);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+case 15:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
+break;
+
+case 16:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 17:
+q0 = GMHD_getJoystickQuaternion(controller_id,2);
+q1 = GMHD_getJoystickQuaternion(controller_id,3);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+case 18:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 19:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,0);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 20:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+case 21:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,2);
+break;
+
+case 22:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,0);
+q3 = GMHD_getJoystickQuaternion(controller_id,1);
+break;
+
+case 23:
+q0 = GMHD_getJoystickQuaternion(controller_id,3);
+q1 = GMHD_getJoystickQuaternion(controller_id,2);
+q2 = GMHD_getJoystickQuaternion(controller_id,1);
+q3 = GMHD_getJoystickQuaternion(controller_id,0);
+break;
+
+}
+
+//Convert quaternion
+rawPitch = GMH_quatToPitch(q0,q1,q2,q3);
+rawYaw = GMH_quatToYaw(q0,q1,q2,q3);
+rawRoll = GMH_quatToRoll(q0,q1,q2,q3);
+
+//Fix the PYR offsets
+pitch = rawPitch + global._GMH_pitchOffset[controller_id];
+yaw = rawYaw + global._GMH_yawOffset[controller_id];
+roll = rawRoll + global._GMH_rollOffset[controller_id];
+
+pitch = radtodeg(GMHD_getJoystickPitch(controller_id));
+yaw = radtodeg(GMHD_getJoystickYaw(controller_id));
+roll = radtodeg(GMHD_getJoystickRoll(controller_id));
+
 
 // Buttons
 buttons = GMHD_getJoystickButtons(controller_id);
@@ -102,13 +256,19 @@ joystick_y = GMHD_getJoystickStickY(controller_id);
 is_docked = GMHD_getJoystickIsDocked(controller_id);
 which_hand = GMHD_getJoystickWhichHand(controller_id);
 
-// Draw model
+//DEBUG data for 2D controllers.
+//GMH_drawCircleInstrument(24+(controller_id*360),120,'Pitch',pitch);
+//GMH_drawCircleInstrument(48+48+(controller_id*360),120,'Yaw',yaw);
+//GMH_drawCircleInstrument(48+48+48+(controller_id*360),120,'Roll',roll);
+//GMH_drawYawInstrument(120+(controller_id*360),260,yaw);
+
 d3d_transform_set_identity();
-    d3d_transform_add_rotation_x(q0*180);
-    d3d_transform_add_rotation_z(q1*180);
-    d3d_transform_add_rotation_y(q2*180);
-    
+    //d3d_transform_add_rotation_x(pitch);
+    //d3d_transform_add_rotation_y(roll);
+    //d3d_transform_add_rotation_z(yaw);
+    d3d_add_rotation_quaternion(q0,q1,q2,q3);
     d3d_transform_add_translation(x,y,z);
+    d3d_model_draw(global.hydraModel,0,0,0,tex_test);
     d3d_model_draw(global.joystick,0,0,0,tex_test);
 d3d_transform_set_identity();
 </string>
@@ -116,7 +276,7 @@ d3d_transform_set_identity();
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="32">
+    <event eventtype="9" enumb="79">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -133,7 +293,8 @@ d3d_transform_set_identity();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>GMHD_calibrateRotation(controller_id);
+            <string>//GMHD_calibrateRotation(controller_id, rawPitch, rawYaw, rawRoll);
+
 </string>
           </argument>
         </arguments>

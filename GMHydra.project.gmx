@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="5" name="datafiles">
+  <datafiles number="6" name="datafiles">
     <datafile>
       <name>sixense.dll</name>
       <exists>-1</exists>
@@ -38,12 +38,34 @@
       </ConfigOptions>
       <filename></filename>
     </datafile>
+    <datafile>
+      <name>hydra.obj</name>
+      <exists>-1</exists>
+      <size>1921</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>hydra.obj</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_hydra</sprite>
     <sprite>sprites\spr_joystick</sprite>
+    <sprites name="2D">
+      <sprite>sprites\spr_pitch</sprite>
+      <sprite>sprites\spr_yaw</sprite>
+      <sprite>sprites\spr_angle</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tex_floor</background>
@@ -60,6 +82,7 @@
           <script>scripts\GMHD_getMaxBases.gml</script>
           <script>scripts\GMHD_getHistorySize.gml</script>
           <script>scripts\GMHD_getMaxControllers.gml</script>
+          <script>scripts\GMHD_getVersion.gml</script>
           <script>scripts\GMHD_getHighPriorityBindingEnabled.gml</script>
           <script>scripts\GMHD_isBaseConnected.gml</script>
           <script>scripts\GMHD_autoEnableHemisphereTracking.gml</script>
@@ -88,9 +111,17 @@
               <script>scripts\GMHD_getJoystickYaw.gml</script>
               <script>scripts\GMHD_getJoystickPitch.gml</script>
               <script>scripts\GMHD_getJoystickRoll.gml</script>
-              <script>scripts\GMHD_getJoystickZ.gml</script>
-              <script>scripts\GMHD_getJoystickX.gml</script>
               <script>scripts\GMHD_getJoystickY.gml</script>
+              <script>scripts\GMHD_getJoystickX.gml</script>
+              <script>scripts\GMHD_getJoystickZ.gml</script>
+              <scripts name="Normalized">
+                <script>scripts\GMHD_getNormalizedJoystickZ.gml</script>
+                <script>scripts\GMHD_getNormalizedJoystickX.gml</script>
+                <script>scripts\GMHD_getNormalizedJoystickY.gml</script>
+              </scripts>
+              <script>scripts\GMH_quatToYaw.gml</script>
+              <script>scripts\GMH_quatToPitch.gml</script>
+              <script>scripts\GMH_quatToRoll.gml</script>
             </scripts>
             <scripts name="Buttons &amp; Stick">
               <script>scripts\GMHD_getJoystickTrigger.gml</script>
@@ -109,19 +140,39 @@
         </scripts>
         <scripts name="Calibration">
           <script>scripts\GMHD_calibrateRotation.gml</script>
+          <scripts name="Hydra">
+            <script>scripts\GMHD_startCalibrationHydra.gml</script>
+            <script>scripts\GMHD_calibrationStep.gml</script>
+            <script>scripts\GMHD_calibratePositionRazerHydra.gml</script>
+            <script>scripts\GMHD_calibrateRotationRazerHydra.gml</script>
+            <script>scripts\GMHD_isCalibrating.gml</script>
+          </scripts>
         </scripts>
         <script>scripts\GMH_init.gml</script>
       </scripts>
       <scripts name="Objects">
         <script>scripts\GMH_newController.gml</script>
+        <script>scripts\GMH_new2DController.gml</script>
+        <script>scripts\GMH_getRotationMatrix.gml</script>
+        <script>scripts\GMH_getNullMatrix.gml</script>
+      </scripts>
+      <scripts name="Helpers">
+        <script>scripts\GMH_drawYawInstrument.gml</script>
+        <script>scripts\GMH_drawCircleInstrument.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\joymodel.gml</script>
+    <script>scripts\loadModels.gml</script>
+    <script>scripts\d3d_model_load_ext.gml</script>
+    <script>scripts\d3d_add_rotation_quaternion.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="GMHydra">
       <object>objects\obj_hydrabase</object>
       <object>objects\obj_hydra_joystick</object>
+      <objects name="2D">
+        <object>objects\obj_2d_hydrabase</object>
+        <object>objects\obj_2d_hydra_joystick</object>
+      </objects>
     </objects>
     <objects name="Demo">
       <object>objects\obj_3dcontroller</object>
@@ -129,7 +180,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\room_2dtest</room>
+    <room>rooms\room_3dtest</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="9">

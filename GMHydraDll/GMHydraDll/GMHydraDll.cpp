@@ -10,7 +10,7 @@ typedef std::array<float3, 3> float3x3;
 
 const float PI = 3.14159265358979323846264f;
 
-std::string VERSION = "0.1";
+std::string VERSION = "0.2";
 std::string RetString;
 
 sixenseAllControllerData acd;

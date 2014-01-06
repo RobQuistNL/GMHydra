@@ -1,4 +1,4 @@
-﻿Build started 1/6/2014 9:11:10 PM.
+﻿Build started 1/6/2014 9:35:38 PM.
      1>Project "G:\GMSTUDIO\GIT\GMHydra.gmx\GMHydraDll\GMHydraDll\GMHydraDll.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\GMHydraDll.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -22,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.02
+Time Elapsed 00:00:01.38

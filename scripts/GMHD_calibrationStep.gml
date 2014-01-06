@@ -11,6 +11,10 @@ if (calibration == 0) {
         switch (calibration) {
         
             case 1:
+                //Enable the hemisphere tracking
+                GMHD_autoEnableHemisphereTracking(0);
+                GMHD_autoEnableHemisphereTracking(1);
+                //Calculate some pitch / yaw / roll offsets
                 GMHD_calibrateRotationRazerHydra();
                 calibration++;
                 calibrationString = 'Put controllers on floor and press OK.';

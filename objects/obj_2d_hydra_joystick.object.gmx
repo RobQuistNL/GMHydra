@@ -57,21 +57,10 @@ x = GMHD_getJoystickX(controller_id)/2 + obj_2d_hydrabase.x;
 y = GMHD_getJoystickY(controller_id)/2 + obj_2d_hydrabase.y;
 z = GMHD_getNormalizedJoystickZ(controller_id);
 
-// Orientation
-/*q0 = GMHD_getJoystickQuaternion(controller_id,1);
-q1 = GMHD_getJoystickQuaternion(controller_id,2);
-q2 = GMHD_getJoystickQuaternion(controller_id,3);
-q3 = GMHD_getJoystickQuaternion(controller_id,0);*/
-
-q0 = GMHD_getJoystickQuaternion(controller_id,0);
-q1 = GMHD_getJoystickQuaternion(controller_id,1);
-q2 = GMHD_getJoystickQuaternion(controller_id,2);
-q3 = GMHD_getJoystickQuaternion(controller_id,3);
-
-//Convert quaternion
-rawPitch = GMH_quatToPitch(q0,q1,q2,q3);
-rawYaw = GMH_quatToYaw(q0,q1,q2,q3);
-rawRoll = GMH_quatToRoll(q0,q1,q2,q3);
+//Get PYR from DLL
+rawPitch = radtodeg(GMHD_getJoystickPitch(controller_id));
+rawYaw = radtodeg(GMHD_getJoystickYaw(controller_id));
+rawRoll = radtodeg(GMHD_getJoystickRoll(controller_id));
 
 //Fix the PYR offsets
 pitch = rawPitch + global._GMH_pitchOffset[controller_id];
@@ -91,14 +80,7 @@ joystick_y = GMHD_getJoystickStickY(controller_id);
 is_docked = GMHD_getJoystickIsDocked(controller_id);
 which_hand = GMHD_getJoystickWhichHand(controller_id);
 
-//DEBUG data for 2D controllers.
-//GMH_drawCircleInstrument(24+(controller_id*360),120,'Pitch',pitch);
-//GMH_drawCircleInstrument(48+48+(controller_id*360),120,'Yaw',yaw);
-//GMH_drawCircleInstrument(48+48+48+(controller_id*360),120,'Roll',roll);
-
-//GMH_drawYawInstrument(120+(controller_id*360),260,yaw);
-
-
+//Debug data
 matrix = GMH_getRotationMatrix(controller_id);
 xx = controller_id*360
 yyy = 300;
@@ -113,56 +95,11 @@ for (i=0; i&lt;3; i++) {
     yyy+=48+24
 }
 
-//Closeenough:
-//bool closeEnough(const float&amp; a, const float&amp; b, const float&amp; epsilon = std::numeric_limits&lt;float&gt;::epsilon()) {
-//    return (epsilon &gt; std::abs(a - b));
-//}
-
-if (matrix[6] &lt;= -1) {
-    xr = 0; //gimbal lock, value of x doesn't matter
-    yr = pi / 2;
-    zr = xr + arctan2(matrix[1], matrix[2]);
-} else if (matrix[6] &gt;= 1) {
-    xr = 0;
-    yr = -pi / 2;
-    zr = -xr + arctan2(-matrix[1], -matrix[2]);
-} else { //two solutions exist
-    x1 = -arcsin(matrix[6]);
-    x2 = pi - x1;
-
-    y1 = arctan2(matrix[4] / cos(x1), matrix[8] / cos(x1));
-    y2 = arctan2(matrix[4] / cos(x2), matrix[8] / cos(x2));
-
-    z2 = arctan2(matrix[3] / cos(x2), matrix[0] / cos(x2));
-    z1 = arctan2(matrix[3] / cos(x1), matrix[0] / cos(x1));
-
-    //if (abs(x1) &lt; abs(x2)) {
-        xr = x2
-        yr = y2
-        zr = z2
-    //} else {
-    //    xr = x1
-    //    yr = y1
-    //    zr = z1
-    //}
-}
-
-//xr = arctan2(2 * (q0*q1 + q2*q3), 1 - 2 * (q1*q1 + q2*q2))
-//yr = arcsin( 2 * (q0*q2 - q3*q1))
-//zr = arctan2(2 * (q0*q3 + q1*q2), 1 - 2 * (q2*q2 + q3*q3))
-
-
-pitch = radtodeg(yr);
-yaw = radtodeg(xr);
-roll = radtodeg(zr);
-
-//yaw = 180*abs(matrix[0])
-//roll = 180*abs(matrix[4])
-//pitch = 180*abs(matrix[8])
-
-pitch = radtodeg(GMHD_getJoystickPitch(controller_id));
-yaw = radtodeg(GMHD_getJoystickYaw(controller_id));
-roll = radtodeg(GMHD_getJoystickRoll(controller_id));
+// Get quaternions
+q0 = GMHD_getJoystickQuaternion(controller_id,0);
+q1 = GMHD_getJoystickQuaternion(controller_id,1);
+q2 = GMHD_getJoystickQuaternion(controller_id,2);
+q3 = GMHD_getJoystickQuaternion(controller_id,3);
 
 GMH_drawCircleInstrument(24+(controller_id*500),120,'Pitch',pitch);
 GMH_drawCircleInstrument(48+148+(controller_id*500),120,'Yaw',yaw);

@@ -94,56 +94,6 @@ draw_text(10,10,"DLL Version "+string(version)+" - Press enter to use controller
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="84">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>GMHD_autoEnableHemisphereTracking(0);
-GMHD_autoEnableHemisphereTracking(1);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="79">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*global.testlol++
-if global.testlol==16 {
-global.testlol = 0
-}*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="9" enumb="70">
       <action>
         <libid>1</libid>
@@ -163,7 +113,6 @@ global.testlol = 0
             <kind>1</kind>
             <string>filter = !filter;
 GMHD_setFilterEnabled(filter)
-show_message("Filter:"+string(filter));
 </string>
           </argument>
         </arguments>
@@ -188,8 +137,6 @@ show_message("Filter:"+string(filter));
             <kind>1</kind>
             <string>if (controllers == 0) {
     GMHD_init();
-    //show_message("Max bases:"+string(GMHD_getMaxBases()));
-    //show_message("Max controllers:"+string(GMHD_getMaxControllers()));
     if (GMHD_isBaseConnected(0) == true) {
         controllers = GMHD_getNumActiveControllers();
         show_message(string(controllers)+ " active controllers found.");

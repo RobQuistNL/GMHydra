@@ -180,8 +180,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_2dtest</room>
     <room>rooms\room_3dtest</room>
+    <room>rooms\room_2dtest</room>
     <room>rooms\room1</room>
   </rooms>
   <constants number="9">

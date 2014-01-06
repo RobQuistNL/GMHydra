@@ -140,11 +140,11 @@ with (obj_floor_ceiling) {
 
 d3d_set_hidden(false);
 d3d_set_projection_ortho(0,0,view_wview,view_hview,0);
-draw_text(10,10,"FPS: "+string(fps)+"testlol = " +string(global.testlol));
+draw_text(10,10,"FPS: "+string(fps));
 
 switch (debuginfo) {
     case 0:
-        draw_text(10,30,"Press P to cycle through debug info.##Calibrate:#Hold controllers facing forward#next to each other.#Press space");
+        draw_text(10,30,"Press P to cycle through debug info.##Calibrate position:#Hold controllers facing forward#next to each other.#Press space");
         break;
     case 1:
         draw_text(10,30,"Location and orientation:");
